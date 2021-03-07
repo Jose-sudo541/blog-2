@@ -85,7 +85,7 @@
                         <p class="text-small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                             eiusmod.</p>
 
-                        <form action="#">
+                        <form action="/subcripcion">
 
                             <!-- Cambiar el form -->
 

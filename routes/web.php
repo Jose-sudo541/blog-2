@@ -4,6 +4,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogControlador;
+use App\Mail\InfoSubMaileable;
+use Illuminate\Support\Facades\Mail;
+
+
 
 Route::get('/', [BlogControlador::class, 'home'])->middleware('language');
 
@@ -12,4 +16,11 @@ Route::get('/lista/categoria/{categoria}', [BlogControlador::class, 'listaCatego
 
 Route::get('/post/{post}', [BlogControlador::class, 'post'])->middleware('language');
 
-Auth::routes();
+Route::get('/subcripcion', function () {
+    $correo = new InfoSubMaileable;
+
+    Mail::to('zellsusj229@gmail.com')->send($correo);
+    return "Mensaje Enviado";
+});
+
+Auth::routes(['verify' => 'true']);

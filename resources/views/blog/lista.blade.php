@@ -81,7 +81,7 @@
                         <h3 class="h5"><i class="far fa-envelope mr-2"></i>Join the family</h3>
                         <p class="text-small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                             eiusmod.</p>
-                        <form action="#">
+                        <form action="/subcripcion">
                             <div class="form-group mb-1">
                                 <input class="form-control form-control-sm" type="email" name="email"
                                     placeholder="Emaill address">

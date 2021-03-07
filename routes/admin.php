@@ -7,12 +7,15 @@ use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 
-Route::get('', [HomeController::class, 'index'])->middleware('language');
+Route::group(['middleware' => 'verified'], function () {
 
-Route::resource('categoria', CategoriaController::class)->middleware('language');
+    Route::get('', [HomeController::class, 'index'])->middleware('language');
 
-Route::resource('etiquetas', EtiquetaController::class)->middleware('language');
+    Route::resource('categoria', CategoriaController::class)->middleware('language');
 
-Route::resource('posts', PostController::class)->middleware('language');
+    Route::resource('etiquetas', EtiquetaController::class)->middleware('language');
 
-Route::resource('users', UserController::class)->middleware('language');
+    Route::resource('posts', PostController::class)->middleware('language');
+
+    Route::resource('users', UserController::class)->middleware('language');
+});
