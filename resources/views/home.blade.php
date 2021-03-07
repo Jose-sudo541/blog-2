@@ -15,7 +15,7 @@
             @foreach ($posts as $post)
 
                 <a class="destination d-flex align-items-end bg-center bg-cover" href="{{ url('/post/' . $post->id) }}"
-                    style="background: url({{ asset('post/' . $post->image->url) }})">
+                    style="background: url({{ asset('storage/' . $post->image->url) }})">
 
                     <div class="destination-inner w-100 text-center text-white index-forward has-transition">
 
@@ -104,7 +104,7 @@
             <div class="row text-center">
                 @foreach ($categorias as $categoria)
                     <div class="col-lg-2 col-md-4 col-sm-6 mb-4 mb-lg-0">
-                        <a class="reset-anchor d-block" href="{{ url('/lista/categoria/' . $categoria->slug) }}">
+                        <a class="reset-anchor d-block" href="{{ url('/lista/categoria/' . $categoria->id) }}">
                             <h3 class="h5">{{ $categoria->nombre }}</h3>
                             <svg class="svg-icon mb-3 svg-icon-big svg-icon-light text-primary">
                                 <use xlink:href="#reading-1"> </use>
@@ -114,7 +114,7 @@
                 @endforeach
 
             </div>
-            {{ $categorias->links() }} {{-- Se puede editar? --}}
+            {{ $categorias->links() }}
 
         </div>
     </section>

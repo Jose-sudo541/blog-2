@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Etiqueta extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['nombre','slug'];
     // Relacion M:N
 
     public function posts()

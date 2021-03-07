@@ -23,7 +23,7 @@ class ImagenFactory extends Factory
     public function definition()
     {
         return [
-            'url'=> $this->faker->image('public/post', 1600, 545, null, false)
+            'url'=> $this->faker->image('public/storage', 1600, 545, null, false)
         ];
     }
 }

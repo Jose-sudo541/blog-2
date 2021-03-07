@@ -12,10 +12,6 @@ class Categoria extends Model
     protected $fillable = ['nombre','slug'];
     // Relacion 1:N
     
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
     public function posts()
     {
         return $this->hasMany(Post::class, 'categoria_id');

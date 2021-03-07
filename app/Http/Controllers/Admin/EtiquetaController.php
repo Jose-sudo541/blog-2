@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Etiqueta;
 use Illuminate\Http\Request;
-use App\Models\Categoria;
 
-class CategoriaController extends Controller
+class EtiquetaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::paginate(10);
-        return view('admin.categorias.index', compact('categorias'));
+        $etiquetas = Etiqueta::paginate(10);
+        return view('admin.etiquetas.index', compact('etiquetas'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('admin.categorias.create');
+        return view('admin.etiquetas.create');
     }
 
     /**
@@ -41,11 +41,11 @@ class CategoriaController extends Controller
             'nombre'=>'required',
             'slug'=>'required|unique:categorias'
         ]);
-        $categorias = Categoria::create($request->all());
-        $categorias->save();
-        $categorias = Categoria::all();
-        $request->session()->flash('info-create','Categoria Creada');
-        return redirect('admin/categoria');
+        $etiquetas = Etiqueta::create($request->all());
+        $etiquetas->save();
+        $etiquetas = Etiqueta::all();
+        $request->session()->flash('info-create','Etiqueta Creada');
+        return redirect('admin/etiquetas');
     }
 
     /**
@@ -54,9 +54,9 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Categoria $categorium)
+    public function show(Etiqueta $etiqueta)
     {
-        return view('admin.categorias.show', compact('categorium'));
+        return view('admin.etiquetas.show', compact('etiqueta'));
     }
 
     /**
@@ -65,9 +65,9 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categoria $categorium)
+    public function edit(Etiqueta $etiqueta)
     {
-        return view('admin.categorias.edit', compact('categorium'));
+        return view('admin.etiquetas.edit', compact('etiqueta'));
     }
 
     /**
@@ -77,18 +77,18 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoria $categorium)
+    public function update(Request $request, Etiqueta $etiqueta)
     {
         $request->validate([
             'nombre'=>'required',
-            'slug'=>"required|unique:categorias,slug,$categorium->id"
+            'slug'=>"required|unique:categorias,slug,$etiqueta->id"
         ]);
-        $categorium->update($request->all());
-        $categorium->save();
-        $categorium = Categoria::all();
-        $categorias = $categorium;
-        $request->session()->flash('info-update','Categoria Actualizada');
-        return redirect()->route('posts.index');
+        $etiqueta->update($request->all());
+        $etiqueta->save();
+        $etiqueta = Etiqueta::all();
+        $etiquetas = $etiqueta;
+        $request->session()->flash('info-update','Etiqueta Actualizada');
+        return redirect('admin/etiquetas');
     }
 
     /**
@@ -97,11 +97,11 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Categoria $categorium)
+    public function destroy(Request $request, Etiqueta $etiqueta)
     {
-        $categorias = Categoria::find($categorium->id);
-        $categorias->delete();
-        $request->session()->flash('info-drop','Categoria Borrada');
-        return redirect('admin/categoria');
+        $etiquetas = Etiqueta::find($etiqueta->id);
+        $etiquetas->delete();
+        $request->session()->flash('info-drop','Etiqueta Borrada');
+        return redirect('admin/etiquetas');
     }
 }

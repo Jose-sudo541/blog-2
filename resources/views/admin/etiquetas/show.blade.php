@@ -8,17 +8,17 @@
 
 @section('content')
 <div class="text-right">
-    <a class="btn btn-success" href="{{ route('categoria.index') }}">Volver</a>
+    <a class="btn btn-success" href="{{ route('etiquetas.index') }}">Volver</a>
 
 </div>
 <br>
 <div class="card">
     <div class="card-body">
-        <h3>Categoria</h3>
+        <h3>Etiqueta</h3>
         <br>
-        <p> Id: {{$categorium->id}}</p>
-        <p>Nombre: {{$categorium->nombre}}</p>
-        <p>Slug: {{$categorium->slug}}</p>
+        <p> Id: {{$etiqueta->id}}</p>
+        <p>Nombre: {{$etiqueta->nombre}}</p>
+        <p>Slug: {{$etiqueta->slug}}</p>
     </div>
 </div>
 @stop

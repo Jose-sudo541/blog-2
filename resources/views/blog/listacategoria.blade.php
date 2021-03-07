@@ -26,16 +26,16 @@
 
                             <div class="col-lg-6 mb-5">
                                 <a href="{{ url('/post/' . $post->id) }}"><img class="img-fluid mb-4"
-                                        src="{{ asset('post/' . $post->image->url) }}" alt="" /></a>
+                                        src="{{ asset('storage/' . $post->image->url) }}" alt="" /></a>
                                 <ul class="list-inline small text-uppercase mb-0">
                                     <li class="list-inline-item mr-0 text-gray align-middle">By </li>
                                     <li class="list-inline-item align-middle mr-0"><a
                                             class="font-weight-bold reset-anchor">{{ $post->users->name }}</a></li>
                                 </ul>
                                 <h3 class="h4 mt-2"> <a class="reset-anchor"
-                                        href="{{ url('/post/' . $post->id) }}">{{ $post->categorias->nombre }}</a></h3>
+                                        href="{{ url('/post/' . $post->id) }}">{{ $post->nombre }}</a></h3>
                                 <a class="reset-anchor text-gray text-uppercase small mb-2 d-block"
-                                    href="#">{{ $post->nombre }}</a>
+                                    href="{{ url('/post/' . $post->id) }}">{{ $post->categorias->nombre }}</a>
                                 <p class="text-small mb-1">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
                                     nonumy eirmod tempor invidunt ut labore.</p><a class="btn btn-link"
                                     href="{{ url('/post/' . $post->id) }}">Continue reading</a>
@@ -58,8 +58,6 @@
                         <p class="text-small text-muted px-sm-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p><img class="d-block mx-auto mb-3" src="{{ asset('img/signature.png') }}" alt="" width="60">
                     </div> --}}
 
-
-
                     <!-- Categories widget -->
                     <div class="mb-5 text-center">
 
@@ -67,8 +65,8 @@
 
                         <h3 class="h5"> Otras Categorias </h3>
                         @foreach ($categorias as $categoria)
-                            <a class="category reset-anchor bg-cover bg-center mb-2" href="{{ url('/lista/categoria/'. $categoria->slug ) }}"
-                                style="background-color: #000">
+                            <a class="category reset-anchor bg-cover bg-center mb-2"
+                                href="{{ url('/lista/categoria/' . $categoria->id) }}" style="background-color: #000">
                                 <p class="category-title text-uppercase small">{{ $categoria->nombre }}</p>
 
                             </a>

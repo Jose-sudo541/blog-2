@@ -49,6 +49,11 @@
                             <td>{{ $categoria->nombre }}</td>
                             <td>{{ $categoria->slug }}</td>
                             <td width='10px'>
+                                <a class="btn btn-info"
+                                    href="{{ route('categoria.show', $categoria) }}">Show</a>
+    
+                            </td>
+                            <td width='10px'>
                                 <a class="btn btn-primary"
                                     href="{{ url('admin/categoria/' . $categoria->slug . '/edit') }}">Editar</a>
 

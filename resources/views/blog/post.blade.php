@@ -3,6 +3,7 @@
 @section('content')
 
     <section class="py-5">
+
         <div class="container text-center">
             {{-- Cambiar categoria con la BBDD --}}
             <p class="h6 mb-0 text-uppercase text-primary">{{ $post->categorias->nombre }}</p>
@@ -22,7 +23,7 @@
         </div>
 
         {{-- Cambiar imagen por BBDD --}}
-        <img class="w-100 py-5" src="{{ url(asset('post/' . $post->image->url)) }}" alt="">
+        <img class="w-100 py-5" src="{{ url(asset('storage/' . $post->image->url)) }}" alt="">
 
         <div class="container">
             <div class="row">
@@ -31,7 +32,7 @@
 
                 <div class="col-lg-8 mb-5 mb-lg-0">
 
-                    {{ $post->cuerpo }}
+                    {!! $post->cuerpo !!}
 
                     <div class="p-4 bg-light mb-5">
                         <!-- Bucle Etiquetas -->
@@ -68,8 +69,8 @@
                         <!-- Bucle de 3 categorias -->
                         <h3 class="h5"> Otras Categorias </h3>
                         @foreach ($categorias as $categoria)
-                            <a class="category reset-anchor bg-cover bg-center mb-2" href="{{ url('/lista/categoria/'. $categoria->slug ) }}"
-                                style="background-color: #000">
+                            <a class="category reset-anchor bg-cover bg-center mb-2"
+                                href="{{ url('/lista/categoria/' . $categoria->id) }}" style="background-color: #000">
                                 <p class="category-title text-uppercase small">{{ $categoria->nombre }}</p>
 
                             </a>
@@ -109,7 +110,7 @@
                                 <li class="media mb-1">
 
                                     <a href="{{ url('/post/' . $masPost->id) }}"><img
-                                            src="{{ url(asset('post/' . $masPost->image->url)) }}" alt="" width="80"
+                                            src="{{ url(asset('storage/' . $masPost->image->url)) }}" alt="" width="80"
                                             height="90"></a>
 
 

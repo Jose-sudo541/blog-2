@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class BlogControlador extends Controller
 {
     /**
@@ -24,13 +26,19 @@ class BlogControlador extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function lista()
+    public function lista(Request $request)
     {
+        $texto = trim($request->get('texto'));
+
+        $arrayPosts = DB::table('posts')
+            ->select()
+            ->where('nombre', 'LIKE', '%' . $texto . '%')->paginate(6);
+
         $categorias = Categoria::take(3)->get();
         $secondCa = Categoria::all();
         $posts = Post::where('estado', 2)
-            ->paginate(4);
-        return view('blog.lista', compact('categorias', 'posts', 'secondCa'));
+            ->paginate(6);
+        return view('blog.lista', compact('categorias', 'posts', 'secondCa', 'arrayPosts'));
     }
 
     /**
@@ -59,7 +67,7 @@ class BlogControlador extends Controller
             ->where('estado', 2)
             ->paginate(6);
 
-        return view('blog.listacategoria', compact('post','postsCa', 'categorias', 'secondCa'));
+        return view('blog.listacategoria', compact('post', 'postsCa', 'categorias', 'secondCa'));
     }
     /**
      * Show the form for creating a new resource.

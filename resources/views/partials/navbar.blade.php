@@ -14,8 +14,9 @@
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                            <a class="dropdown-item" href="/admin">Admin</a>
-
+                            @can('admin.home')
+                                <a class="dropdown-item" href="/admin">Admin</a>
+                            @endcan
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="gg-log-out"></i>Logout
@@ -82,8 +83,8 @@
     <!-- Navbar 1 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white py-4">
         <div class="container text-center">
-            <a class="navbar-brand mx-auto" href="/"><img class="mb-2" src="{{ asset('img/Logo.webp') }}"
-                    alt="" width="140">
+            <a class="navbar-brand mx-auto" href="/"><img class="mb-2" src="{{ asset('img/Logo.webp') }}" alt=""
+                    width="140">
                 <!-- Logo -->
                 <p class="text-small text-uppercase text-gray mb-0">Libro Abierto</p>
             </a>
@@ -108,8 +109,8 @@
                         <!-- Link--><a class="nav-link" href="{{ url('/post/' . $post->id) }}">Post</a>
                     </li>
                 </ul>
+
             </div>
         </div>
     </nav>
-
 </header>
