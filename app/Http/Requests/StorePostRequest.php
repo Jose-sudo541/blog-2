@@ -32,10 +32,10 @@ class StorePostRequest extends FormRequest
 
         $rules = [
             'nombre' => 'required',
-            'slug' => "required|unique:posts,slug,$post->id",
+            'slug' => "required|unique:posts",
             'categoria_id'=>'required',
             'estado' => 'required|in:1,2',
-            'file'=> 'required|mimes:png,jpg|max:5048,file,' . $post->image->url 
+            'file'=> 'required|mimes:png,jpg|max:5048,file,'
         ];
 
         if ($this->estado == 2) {
